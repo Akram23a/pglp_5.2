@@ -1,32 +1,57 @@
 package PGL.pglp_5_2;
+
+import java.io.ByteArrayInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 /**
  * 
  * @author Akram
  *
- * @param <T>
+ * @param <T> to choose
  */
-public interface DAO<T> {
+public abstract class DAO<T> {
 	/**
-	 * Create
+	 * 
 	 * @param obj
 	 * @return
+	 * @throws FileNotFoundException 
+	 * @throws IOException 
 	 */
-  public T create(T obj);
-  /**
-   * 
-   * @param id
-   * @return
-   */
-  public T find(String id);
-  /**
-   * 
-   * @param obj
-   * @return
-   */
-  public T update(T obj);
-  /**
-   * 
-   * @param obj
-   */
-  public void delete(T obj);
+    public abstract T create(T obj) 
+    		throws FileNotFoundException, IOException;
+    /**
+     * 
+     * @param obj
+     */
+    public abstract void delete(T obj);
+    /**
+     * 
+     * @param obj
+     * @return
+     * @throws IOException 
+     */
+    public abstract T update(T obj) throws IOException;
+    /**
+     * 
+     * @param id
+     * @return
+     * @throws IOException 
+     * @throws ClassNotFoundException 
+     */
+    public abstract T find(int id) 
+    		throws IOException, ClassNotFoundException;
+    /**
+     * 
+     * @param bytes
+     * @return
+     * @throws ClassNotFoundException
+     * @throws IOException
+     */
+    public Object deserialize(final byte[] bytes) throws ClassNotFoundException,
+    IOException {
+        ByteArrayInputStream b = new ByteArrayInputStream(bytes);
+        ObjectInputStream o = new ObjectInputStream(b);
+        return o.readObject();
+    }
 }
