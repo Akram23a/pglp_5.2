@@ -22,4 +22,56 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+   	 <reporting>
+      <plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jxr-plugin</artifactId>
+				<version>2.3</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>2.6</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>3.1.1</version>
+				<configuration>
+					<configLocation>google_checkstyle.xml</configLocation>
+				</configuration>
+				<!-- <reportSets> <reportSet> <reports> <report>checkstyle</report> </reports> 
+					</reportSet> </reportSets> -->
+			</plugin>
+
+			<plugin>
+				<groupId> org.apache.maven.plugins </groupId>
+				<artifactId> maven-javadoc-plugin </artifactId>
+				<version> 3.2.0 </version>
+			</plugin>
+
+		</plugins>
+    </reporting>
+    
+    <build>
+		<plugins>
+			<plugin>
+				<groupId>com.github.spotbugs</groupId>
+				<artifactId>spotbugs-maven-plugin</artifactId>
+				<version>4.0.0-SNAPSHOT</version>
+			</plugin>
+
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>3.1.1</version>
+
+			</plugin>
+		</plugins>
+	</build>
+  
 </project>
