@@ -39,7 +39,7 @@ public abstract class DAO<T> {
      * @throws IOException 
      * @throws ClassNotFoundException 
      */
-    public abstract T find(int id) 
+    public abstract T find(String nom) 
     		throws IOException, ClassNotFoundException;
     /**
      * 

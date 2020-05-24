@@ -61,11 +61,11 @@ public class PersonnelDAO extends DAO<Personnel> {
         return obj;
 	}
 	@Override
-	public Personnel find(int id) 
+	public Personnel find(final String nom1) 
 			throws IOException, ClassNotFoundException {
         String nomDir = "PersonnelDAO";
         File dir = new File(nomDir);
-        File search = new File(nomDir + "\\" + id + ".txt");
+        File search = new File(nomDir + "\\" + nom1 + ".txt");
         Object deserialized = null;
         if (dir.exists()) {
             if (search.exists()) {
